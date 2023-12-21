@@ -1,0 +1,184 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #a7bcff;
+    height: 100vh;
+    justify-content: center;
+}
+.formWrapper{
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.logo{
+    color: #5d5b8d;
+    font-weight: bold;
+    font-size: 30px;
+}
+.title{
+    color:#5d5b8d;
+    font-weight: bold;
+    font-size: 12px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 15px;
+    input{
+        border: none;
+        border-bottom: 1px solid #a7bcff;
+        border-radius: 10px;
+        width: 250px;
+        font-size: large;
+        padding: 15px;
+        &::placeholder{
+            color:rgb(175, 175, 175);
+        }
+    }
+    button{
+        background-color: #5d5b8d;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    p{
+        color: #5d5b8d;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    label{
+        color: #5d5b8d;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        gap:10px;
+        display: flex;
+        align-items: center;
+    }
+    img{
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+}
+
+.home{
+    background-color: #a7bcff;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    .container{
+        border: 1px solid white;
+        border-radius: 10px;
+        width: 65%;
+        height: 80%;
+        display: flex;
+        overflow: hidden;
+        .sidebar{
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #3e3c61;
+            background-color: #3e3c61;
+            .navbar{
+                display: flex;
+                align-items: center;
+                background-color: #2f2d52;
+                height: 50px; 
+                padding: 10px;
+                justify-content: space-between;
+                color: #ddddf7;
+
+                .logo{
+                    color:white;
+                    font-size: 20px;
+                }
+                .user{
+                    display: flex;
+                    gap: 10px;
+
+                    img{
+                        background-color: #ddddf7;
+                        height: 24px;
+                        width: 24px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+                .username{
+                    font-weight: bold;
+                    
+                }
+               
+                button{
+                    background-color:#5d5b8d;
+                    color: white;
+                    font-size: 12px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 10%;
+                }
+                .search{
+                    border-bottom: 1px solid gray;
+                    .searchForm{
+                        padding: auto;
+                    }
+                }
+            }
+        }
+        .chat{
+            flex: 2;
+        }
+    }
+}
+input{
+    background-color:transparent;
+    font-weight: bold;
+    border: none;
+    color: white;
+    outline: none;
+    &::placeholder{
+        color: white;
+    }
+}
+
+.userChat{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+        background-color:#2f2d52;
+    }
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .userChatDetails{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        p{
+            font-weight: bold;
+            padding: -10px;
+        }
+    }
+}
