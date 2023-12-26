@@ -2,8 +2,9 @@ import React from "react";
 import Sidebar from "../Components/Sidebar";
 import Chat from "../Components/Chat";
 import "../styles/Register.css";
-import Login from "./Login";
-import Register from "./Register";
+import "../Components/Search";
+// import Login from "./Login";
+// import Register from "./Register";
 
 const Home = () => {
     return (
