@@ -43,7 +43,7 @@ const Register = () => {
                             uid: res.user.uid,
                             timestamp: serverTimestamp(),
                         });
-
+                        await setDoc(doc(db, "userChats", res.user.uid), {});
                     });
                 }
             );
