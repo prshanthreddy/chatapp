@@ -11,15 +11,12 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const distplayName = e.target[0].value;
-        const username = e.target[1].value;
-        const email = e.target[2].value;
-        const password = e.target[3].value;
-        const file = e.target[4].files[0];
-
-        // const auth = getAuth();
+        const email = e.target[1].value;
+        const password = e.target[2].value;
+        const file = e.target[3].files[0];
         try{
             const res=await createUserWithEmailAndPassword(auth, email, password)
-            const storageRef = ref(storage, `profile/${username.name}`);
+            const storageRef = ref(storage, `profile/${res.user.email}`);
             const uploadTask = uploadBytesResumable(storageRef, file);
             uploadTask.on(
                 "state_changed",
@@ -53,7 +50,6 @@ const Register = () => {
                 <span className="desc">Register</span>
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Display Name" />
-                    <input type="text" placeholder="Username" />
                     <input type="email" placeholder="Email" />
                     <input type="password" placeholder="Password" />
                     <input style={{display:"none"}} type="file" id="file" placeholder="Profile Picture" />
