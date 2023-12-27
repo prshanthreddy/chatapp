@@ -5,6 +5,9 @@ import {createUserWithEmailAndPassword,updateProfile} from "firebase/auth";
 import {auth,storage} from "../firebase.js";
 import { useState } from "react";
 import {ref,uploadBytesResumable,getDownloadURL, } from "firebase/storage";
+import {doc, setDoc} from "firebase/firestore";
+import {db} from "../firebase.js";
+import {serverTimestamp} from "firebase/firestore";
 
 const Register = () => {
     const [error, setError] = useState(false);
@@ -33,6 +36,14 @@ const Register = () => {
                             displayName: distplayName,
                             photoURL: downloadURL,
                         });
+                        await setDoc(doc(db, "users", res.user.uid), {
+                            distplayName,
+                            email,
+                            photoURL: downloadURL,
+                            uid: res.user.uid,
+                            timestamp: serverTimestamp(),
+                        });
+
                     });
                 }
             );
