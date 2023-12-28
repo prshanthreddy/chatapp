@@ -8,7 +8,7 @@ import {ref,uploadBytesResumable,getDownloadURL, } from "firebase/storage";
 import {doc, setDoc} from "firebase/firestore";
 import {db} from "../firebase.js";
 import {serverTimestamp} from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const Register = () => {
     const [error, setError] = useState(false);
@@ -74,7 +74,7 @@ const Register = () => {
                     <button type="submit">Register</button>
                     {error && <span className="error">Something went wrong!</span>}
                 </form>
-                <span className="desc">Already have an account? Login</span>
+                <span className="desc">Already have an account? <Link to="/login">Login</Link></span>
             </div>
         </div>
     );

@@ -1,27 +1,66 @@
-import React from 'react'
+import { collection, query, where, getDocs } from "firebase/firestore";
+import React, { useState } from "react";
+import { db } from "../firebase";
 
 const Search = () => {
-  return (
-    <div className='search'> 
-      <div class Name="seacrhForm">
-        <input type="text" placeholder='Find a user' />
-      </div>
-      <div className="userChat">
-        <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1200"alt="" />
-        <div className="userChatInfo">
-          <span>Jane</span> 
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="userChat">
-        <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1200"alt="" />
-        <div className="userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
-        </div>
-      </div> 
-    </div>
-  )
-}
+  const [username, setUsername] = useState("");
+  const [user, setUser] = useState(null);
+  const [err, setErr] = useState(false);
 
-export default Search
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
+
+    try {
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          setUser(doc.data());
+        });
+        setErr(false); // Set error to false if user found
+      } else {
+        setUser(null);
+        setErr(true); // Set error if no user found
+      }
+    } catch (error) {
+      setErr(true); // Set error if an exception occurs
+    }
+  };
+
+  const handleKey = (e) => {
+    if (e.code === "Enter") {
+      handleSearch();
+    }
+  };
+
+  return (
+    <div className="search">
+      <div className="searchForm">
+        <input
+          type="text"
+          placeholder="Find a user"
+          onKeyDown={handleKey}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      {user && (
+        <div className="userChat">
+          <img
+            src={user.photoURL}
+            alt={`Profile of ${user.displayName}`}
+          />
+          <div className="userChatInfo">
+            <span>{user.displayName}</span>
+            <p>Hello</p>
+          </div>
+        </div>
+      )}
+      {err && <span className="error">User not found!</span>}
+    </div>
+  );
+};
+
+export default Search;
