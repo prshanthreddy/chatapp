@@ -261,7 +261,7 @@ form {
                     border-radius: 10px;
                     padding: 10px;
                     margin-right: 10px;
-                    color: black;
+                    /* color: black; */
                     font-size: 18px;
                     background-color: #ddddf7;
                 }

@@ -20,7 +20,7 @@ const Search = () => {
         querySnapshot.forEach((doc) => {
           setUser(doc.data());
         });
-        setErr(false); // Set error to false if user found
+        setErr(false); // Reset error state if user is found
       } else {
         setUser(null);
         setErr(true); // Set error if no user found

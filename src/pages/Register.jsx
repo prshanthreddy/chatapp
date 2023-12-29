@@ -15,7 +15,7 @@ const Register = () => {
     const navigate=useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const distplayName = e.target[0].value;
+        const displayName = e.target[0].value;
         const email = e.target[1].value;
         const password = e.target[2].value;
         const file = e.target[3].files[0];
@@ -35,11 +35,11 @@ const Register = () => {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
                         await updateProfile(res.user, {
-                            displayName: distplayName,
+                            displayName: displayName,
                             photoURL: downloadURL,
                         });
                         await setDoc(doc(db, "users", res.user.uid), {
-                            distplayName,
+                            displayName,
                             email,
                             photoURL: downloadURL,
                             uid: res.user.uid,
