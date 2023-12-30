@@ -1,8 +1,6 @@
 import React from "react";
 import Sidebar from "../Components/Sidebar";
 import Chat from "../Components/Chat";
-import "../styles/Register.css";
-import "../Components/Search";
 
 const Home = () => {
     return (
