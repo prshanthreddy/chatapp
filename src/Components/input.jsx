@@ -7,6 +7,7 @@ import { doc } from 'firebase/firestore';
 import { db, storage } from '../firebase';
 import { getDownloadURL, ref, uploadBytesResumable, } from 'firebase/storage';
 import { serverTimestamp } from 'firebase/firestore';
+import send from '../images/send-message.png';
 
 const Input = () => {
   const [text, setText] = useState('');
@@ -111,7 +112,14 @@ const Input = () => {
             alt='Attach File'
           />
         </label> 
-        <button onClick={handleSend}>Send</button>
+      <button onClick={handleSend} id='button' style={{ display: 'none' }}>
+        </button>        
+        <label htmlFor='button'>
+          <img
+            src={send}
+            alt='Send'
+          />
+        </label>
       </div>
     </div>
   );

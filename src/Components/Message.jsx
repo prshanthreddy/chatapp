@@ -11,7 +11,10 @@ const Message = ({ message }) => {
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
+const handleImageClick = () => {
+    window.open(message.file)
 
+}
   return (
     <div
       ref={ref}
@@ -30,9 +33,10 @@ const Message = ({ message }) => {
       </div>
       <div className="messageContent">
         <p>{message.text}</p>
-        {message.file && <img src={message.file} alt="" />}
+        {message.file && <img src={message.file} alt=""  onClick={handleImageClick}/>}
       </div>
     </div>
   );
 };
+
 export default Message;
