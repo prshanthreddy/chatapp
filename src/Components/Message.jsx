@@ -26,9 +26,10 @@ const Message = ({ message }) => {
           }
           alt=""
         />
-        <span>just now</span>
+        
       </div>
       <div className="messageContent">
+      <span>{message.date.time}</span>
         <p>{message.text}</p>
         {message.img && <img src={message.img} alt="" />}
       </div>
