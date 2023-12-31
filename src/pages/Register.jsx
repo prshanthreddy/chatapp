@@ -1,4 +1,4 @@
-import "../styles/Register.css";
+import "../styles/Register.scss";
 import Add from "../images/profilepicture.png";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
