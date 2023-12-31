@@ -82,6 +82,12 @@ const Input = () => {
       // Handle error
     }
   };
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // Prevents adding a new line
+      handleSend(); // Calls handleSend function when Enter is pressed
+    }
+  };
 
   return (
     <div className='input'>
@@ -90,6 +96,7 @@ const Input = () => {
         placeholder='Type a message'
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
       <div className='send'>
         <input
@@ -103,11 +110,7 @@ const Input = () => {
             src='https://img.icons8.com/material-rounded/24/000000/attach.png'
             alt='Attach File'
           />
-        </label>
-        <img
-          src='https://img.icons8.com/material-rounded/24/000000/happy.png'
-          alt='Emoji'
-        />
+        </label> 
         <button onClick={handleSend}>Send</button>
       </div>
     </div>
