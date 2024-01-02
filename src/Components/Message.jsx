@@ -32,8 +32,7 @@ const handleImageClick = () => {
         <span>just now</span>
       </div>
       <div className="messageContent">
-        <p>{message.text}</p>
-        {message.file && <img src={message.file} alt=""  onClick={handleImageClick}/>}
+        <p>{message.text}{message.file && <img src={message.file} alt=""  onClick={handleImageClick}/>}</p>
       </div>
     </div>
   );
